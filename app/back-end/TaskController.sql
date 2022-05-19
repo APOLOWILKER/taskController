@@ -1,19 +1,17 @@
 DROP DATABASE IF EXISTS TaskController;
 
-CREATE DATABASE TaskController;
+CREATE SCHEMA TaskController;
 
-USE TaskController;
-
-CREATE TABLE `tasks` (
-    id INT NOT NULL auto_increment,
-    titleTask VARCHAR(70) NOT NULL,
-    contentTask VARCHAR(120) NOT NULL,
-    statusTask VARCHAR(15) NOT NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `TaskController`.`Tasks` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `createdAt` DATE,
+    `titleTask` VARCHAR(45) NULL,
+    `contentTask` VARCHAR(125) NULL,
+    `statusTask` VARCHAR(15) NULL,
+    PRIMARY KEY (`id`));
 
 SET SQL_SAFE_UPDATES = 0;
 
--- INSERT INTO StoreManager.tasks (titleTask, contentTask, statusTask) VALUES
---     ("", "", "pendente"),
---     ("", "", "pendente"),
+INSERT INTO TaskController.Tasks (createdAt, titleTask, contentTask, statusTask) VALUES
+    ("2006-12-30 00:38:54.840" ,"titulo", "Conteudo", "pendente");
 
