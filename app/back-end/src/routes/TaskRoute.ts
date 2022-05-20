@@ -10,4 +10,9 @@ taskRouter.get(
   taskController.getAll,
 );
 
+taskRouter.get(
+  '/',
+  taskController.getAll,
+);
+
 export default taskRouter;
