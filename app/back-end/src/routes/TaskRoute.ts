@@ -17,6 +17,11 @@ taskRouter.post(
   taskController.creatTask,
 );
 
+taskRouter.delete(
+  '/:id',
+  taskController.deleteTask,
+);
+
 taskRouter.get(
   '/',
   taskController.getAll,

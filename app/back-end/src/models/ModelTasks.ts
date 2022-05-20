@@ -30,8 +30,13 @@ export default class TaskModel {
       [insertId],
     );
 
-    console.log(select);
-
     return select as unknown as ITasks;
+  }
+
+  public async deleteTask(id: number) {
+    await this.connection.execute<RowDataPacket[]>(
+      'DELETE FROM TaskController.Tasks WHERE id=?',
+      [id],
+    );
   }
 }
