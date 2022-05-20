@@ -1,4 +1,5 @@
 import * as express from 'express';
+import Errormiddleware from './middlewares/Errormiddleware';
 import taskRouter from './routes/TaskRoute';
 
 class App {
@@ -17,7 +18,7 @@ class App {
       next();
     };
 
-    this.app.use(accessControl, express.json());
+    this.app.use(accessControl, express.json(), Errormiddleware);
 
     this.app.use('/tasks', taskRouter);
   }
