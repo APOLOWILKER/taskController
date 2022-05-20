@@ -1,4 +1,5 @@
 import { Pool, RowDataPacket, ResultSetHeader } from 'mysql2/promise';
+import IUpdateTasks from '../interfaces/updateTask';
 import ICreateTask from '../interfaces/CreateTask';
 import ITasks from '../interfaces/TasksInterface';
 
@@ -38,5 +39,13 @@ export default class TaskModel {
       'DELETE FROM TaskController.Tasks WHERE id=?',
       [id],
     );
+  }
+
+  public async updateTask({ id, titleTask, contentTask, statusTask }: IUpdateTasks) {
+    const [result] = await this.connection.execute<ResultSetHeader>(
+      'UPDATE TaskController.Tasks SET titleTask=?, contentTask=?, statusTask=? WHERE id=?',
+      [titleTask, contentTask, statusTask, id],
+    );
+    return result;
   }
 }

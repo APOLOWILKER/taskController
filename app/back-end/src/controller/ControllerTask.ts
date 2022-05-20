@@ -45,4 +45,20 @@ export default class TaskController {
       next(error);
     }
   };
+
+  public updateTask = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { titleTask, contentTask, statusTask } = req.body;
+      const id = Number(req.params.id);
+
+      const updateTask = await this.taskService.updateTask(
+        { id, titleTask, contentTask, statusTask },
+      );
+
+      return res.status(200).json(updateTask);
+    } catch (error) {
+      console.error();
+      next(error);
+    }
+  };
 }

@@ -9,17 +9,23 @@ const taskRouter = express.Router();
 const taskController = new TaskController();
 
 // ==== ROUTE TASKS ===
+
+taskRouter.delete(
+  '/:id',
+  taskController.deleteTask,
+);
+
+taskRouter.patch(
+  '/:id',
+  taskController.updateTask,
+);
+
 taskRouter.post(
   '/',
   validateStatus,
   validateContentTask,
   validateTitleTask,
   taskController.creatTask,
-);
-
-taskRouter.delete(
-  '/:id',
-  taskController.deleteTask,
 );
 
 taskRouter.get(
